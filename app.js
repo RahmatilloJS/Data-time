@@ -5,21 +5,25 @@ const text = document.querySelector('.text')
 
 
 let counter = 0
-
 startBtn.addEventListener('click', ()=>{
-    timer = setInterval( setTime, 1000)
+    timer = setInterval(setTime, 1000)
+    startBtn.setAttribute('disabled', 'true')
 })
-stopBtn.addEventListener('click', clearTime)
-function clearTime(){
+
+pouse.addEventListener('click', ()=>{
+    startBtn.removeAttribute('disabled')
+    clearInterval(timer)
+})
+
+stopBtn.addEventListener('click', ()=>{
+    startBtn.removeAttribute('disabled')
     clearInterval(timer)
     counter = 0
     text.innerHTML = 0
-}
+})
+
 
 function setTime(){
     counter++
     text.innerHTML = counter
 }
-pouse.addEventListener('click', ()=>{
-    clearInterval(timer)
-})
